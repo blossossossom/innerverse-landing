@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Genos:wght@200&display=swap" rel="stylesheet" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <style>
     /* ── Reset & Base ───────────────────────────────────── */
@@ -371,170 +373,9 @@
     .cta-button { animation: glowPulse 3.5s ease-in-out infinite; }
     .cta-button:hover { animation: none; }
 
-    /* ── Contact modal ──────────────────────────────────── */
-    #contact-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    #contact-modal.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(4, 8, 18, 0.82);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .modal-card {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 520px;
-      background:
-        radial-gradient(ellipse 120% 80% at 50% -10%, rgba(130,185,240,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(200,140,45,0.08) 0%, transparent 60%),
-        #0a1120;
-      border: 1px solid rgba(255,255,255,0.07);
+    /* ── Calendly popup overrides ───────────────────────── */
+    .calendly-overlay .calendly-popup {
       border-radius: 4px;
-      padding: 48px 44px 44px;
-      transform: translateY(20px);
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    #contact-modal.open .modal-card {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px; right: 20px;
-      background: none;
-      border: none;
-      color: var(--mist);
-      font-size: 1.4rem;
-      cursor: pointer;
-      line-height: 1;
-      padding: 4px 8px;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-    }
-    .modal-close:hover { opacity: 1; }
-
-    .modal-eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 12px;
-    }
-
-    .modal-title {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 28px;
-      line-height: 1.15;
-    }
-
-    .modal-form { display: flex; flex-direction: column; gap: 16px; }
-
-    .form-row { display: flex; gap: 14px; }
-    .form-row .form-group { flex: 1; }
-
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-
-    .form-group label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--mist);
-    }
-
-    .form-group input,
-    .form-group textarea {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 2px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      padding: 12px 14px;
-      outline: none;
-      transition: border-color 0.3s ease;
-      width: 100%;
-      resize: none;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(138,155,176,0.4); }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: rgba(0,194,255,0.35);
-      background: rgba(0,194,255,0.03);
-    }
-
-    .form-submit {
-      margin-top: 8px;
-      padding: 15px 32px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--void);
-      background: var(--blue);
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.4s ease;
-      align-self: flex-start;
-    }
-
-    .form-submit::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .form-submit span { position: relative; z-index: 1; }
-    .form-submit:hover::before { opacity: 1; }
-    .form-submit:hover { box-shadow: 0 0 22px rgba(253,207,124,0.3); }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 24px 0 8px;
-    }
-    .form-success p:first-child {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.4rem;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .form-success p:last-child {
-      font-size: 0.9rem;
-      color: var(--mist);
     }
 
     /* ── Footer ─────────────────────────────────────────── */
@@ -651,54 +492,6 @@
 
 <body>
 
-  <!-- ── CONTACT MODAL ────────────────────────────────── -->
-  <div id="contact-modal" role="dialog" aria-modal="true" aria-label="Get in touch">
-    <div class="modal-backdrop" id="modal-backdrop"></div>
-    <div class="modal-card">
-      <button class="modal-close" id="modal-close" aria-label="Close">&#x2715;</button>
-      <p class="modal-eyebrow">Founding Partnership</p>
-      <h2 class="modal-title">Let's find out if<br>this is a fit.</h2>
-
-      <!--
-        FORM SETUP (Formspree — free, no backend needed):
-        1. Go to https://formspree.io and create a free account
-        2. Create a new form — you'll get an endpoint like https://formspree.io/f/abcdefgh
-        3. Replace YOUR_FORMSPREE_ID below with that ID (just the last part, e.g. "abcdefgh")
-      -->
-      <form
-        class="modal-form"
-        id="contact-form"
-        action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-        method="POST"
-      >
-        <div class="form-row">
-          <div class="form-group">
-            <label for="cf-name">Your name</label>
-            <input id="cf-name" type="text" name="name" placeholder="Full name" required />
-          </div>
-          <div class="form-group">
-            <label for="cf-email">Email</label>
-            <input id="cf-email" type="email" name="email" placeholder="you@example.com" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="cf-community">Your community or project</label>
-          <input id="cf-community" type="text" name="community" placeholder="What are you building?" />
-        </div>
-        <div class="form-group">
-          <label for="cf-message">Anything else you'd like us to know</label>
-          <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your community, what you need, or what drew you here…"></textarea>
-        </div>
-        <button type="submit" class="form-submit"><span>Send message</span></button>
-      </form>
-
-      <div class="form-success" id="form-success">
-        <p>Message received.</p>
-        <p>We'll be in touch soon — thank you for reaching out.</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Animated backdrop that blocks scrolled content behind logo -->
   <div id="header-backdrop"></div>
 
@@ -791,40 +584,11 @@
         If this resonates, we'd like to hear about you: your community, what you're building, and what you need from a space that holds it.
       </p>
 
-      <!--
-        ╔══════════════════════════════════════════════════════╗
-        ║  CALENDLY EMBED — INSTRUCTIONS                       ║
-        ║                                                      ║
-        ║  To add your Calendly:                               ║
-        ║                                                      ║
-        ║  Option A — Inline widget (recommended):             ║
-        ║    1. Add this script before </body>:                ║
-        ║       <script src="https://assets.calendly.com/      ║
-        ║         assets/external/widget.js"></script>         ║
-        ║    2. Replace the #calendly-embed div below with:    ║
-        ║       <div class="calendly-inline-widget"            ║
-        ║         data-url="YOUR_CALENDLY_URL"                 ║
-        ║         style="min-width:320px;height:630px;">       ║
-        ║       </div>                                         ║
-        ║                                                      ║
-        ║  Option B — Open popup on button click:              ║
-        ║    Add Calendly popup widget script, then change     ║
-        ║    the .cta-button href to "#" and add:              ║
-        ║    onclick="Calendly.initPopupWidget({               ║
-        ║      url:'YOUR_CALENDLY_URL'});return false;"        ║
-        ╚══════════════════════════════════════════════════════╝
-      -->
-      <div id="calendly-embed" class="reveal delay-3">
-        <p>Your Calendly embed will appear here.</p>
-        <code>id="calendly-embed"</code>
-        <p>See the HTML comment above this div for step-by-step setup instructions (inline widget or popup).</p>
-      </div>
-
-      <div class="reveal delay-4">
+      <div class="reveal delay-3">
         <a
           class="cta-button"
           href="#"
-          onclick="openContactModal(); return false;"
+          onclick="Calendly.initPopupWidget({url:'https://calendly.com/blossomemami/30min'}); return false;"
         >
           <span>Reserve your conversation</span>
         </a>
@@ -859,45 +623,6 @@
     window.addEventListener('load', setHeaderOffset);
     document.fonts.ready.then(setHeaderOffset);
     window.addEventListener('resize', setHeaderOffset);
-
-    // ── Contact modal ────────────────────────────────────
-    const modal = document.getElementById('contact-modal');
-
-    function openContactModal() {
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeContactModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('modal-close').addEventListener('click', closeContactModal);
-    document.getElementById('modal-backdrop').addEventListener('click', closeContactModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeContactModal(); });
-
-    // Formspree AJAX submission — shows success state without page reload
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = this;
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else {
-          alert('Something went wrong — please try again or email us directly.');
-        }
-      } catch {
-        alert('Could not send — check your connection and try again.');
-      }
-    });
 
     // ── Wordmark letter spread ───────────────────────────
     function spellOut(id) {
