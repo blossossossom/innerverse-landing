@@ -6,7 +6,7 @@
   <title>Innerverse — Founding Partners</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700&family=Genos:wght@200&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700&family=Genos:wght@200&display=swap" rel="stylesheet" />
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
@@ -151,13 +151,13 @@
     }
 
     .hero-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.6rem, 6.5vw, 4rem);
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 6.8vw, 4.4rem);
+      font-weight: 300;
       line-height: 1.12;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.02em;
       color: var(--white);
-      margin-bottom: 24px;
+      margin-bottom: 48px;
       opacity: 0;
       animation: heroFadeIn 2s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
     }
@@ -173,20 +173,128 @@
       font-weight: 300;
       color: rgba(255,255,255,0.95);
       max-width: 560px;
-      margin-bottom: 48px;
+      margin-bottom: 0;
       opacity: 0;
       animation: heroFadeIn 2s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
     }
 
-    .hero-vision {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.95);
-      max-width: 640px;
-      border-left: 1px solid rgba(0,194,255,0.25);
-      padding-left: 24px;
-      opacity: 0;
-      animation: heroFadeIn 2s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
+    /* ── Vision / Room section ──────────────────────────── */
+    #vision {
+      padding: 80px 0 0;
+    }
+
+    .vision-header {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.48);
+      letter-spacing: 0.1em;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 56px;
+      line-height: 1.8;
+    }
+
+    #room-stage {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    #room-particles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    #room-perspective {
+      position: absolute;
+      inset: 0;
+      perspective-origin: 50% 50%;
+    }
+
+    #room-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1.7s cubic-bezier(0.55, 0.06, 0.22, 1);
+      will-change: transform;
+    }
+
+    .room-wall {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background:
+        radial-gradient(ellipse 40% 60% at 50% 0%,
+          rgba(40,130,255,0.11) 0%,
+          rgba(0,70,200,0.05) 55%,
+          transparent 82%
+        ),
+        linear-gradient(180deg,
+          rgba(9,15,28,0.98)  0%,
+          rgba(5,9,18,1)      55%,
+          rgba(4,7,16,1)     100%
+        );
+      box-shadow:
+        inset 2px  0 50px rgba(0,80,180,0.13),
+        inset -2px 0 50px rgba(0,80,180,0.13),
+        inset 0    2px 70px rgba(0,100,220,0.09);
+    }
+
+    /* floor glow warm wash */
+    .room-wall::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 28% at 50% 92%,
+        rgba(253,207,124,0.09) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .room-wall p {
+      position: relative;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 2.1vw, 1.65rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      text-align: center;
+      line-height: 1.65;
+      max-width: 680px;
+      letter-spacing: 0.01em;
+      z-index: 1;
+    }
+
+    /* top/bottom gradient masks — room dissolves into page */
+    .room-fade {
+      position: absolute;
+      left: 0; right: 0;
+      height: 32%;
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    .room-fade-top {
+      top: 0;
+      background: linear-gradient(to bottom, #111d2c 0%, rgba(17,29,44,0) 100%);
+    }
+
+    .room-fade-bottom {
+      bottom: 0;
+      background: linear-gradient(to top, #111d2c 0%, rgba(17,29,44,0) 100%);
     }
 
     @keyframes heroFadeIn {
@@ -233,130 +341,59 @@
     }
 
     .benefits-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 48px;
     }
 
-    /* ── Portal card — nebula vortex box ── */
     .benefit-item {
       position: relative;
-      padding: 40px 44px;
-      /* Site background bleeding through — matches #060c18 with subtle atmosphere */
-      background:
-        radial-gradient(ellipse 70% 55% at 15% 15%,
-          rgba(0,100,200,0.09) 0%,
-          transparent 58%
-        ),
-        radial-gradient(ellipse 55% 45% at 88% 85%,
-          rgba(0,80,170,0.07) 0%,
-          transparent 52%
-        ),
-        linear-gradient(
-          150deg,
-          rgba(7,13,26,0.97) 0%,
-          rgba(6,11,22,0.97) 45%,
-          rgba(8,13,24,0.97) 100%
-        );
-      /* Fine gold border — the visible edge of the vortex */
-      border: 1px solid rgba(253,207,124,0.28);
-      border-radius: 2px;
-      /* Emanating gold particle glow — multiple concentric halos */
-      box-shadow:
-        /* inner nebula tint */
-        inset 0 0 50px rgba(0,120,255,0.07),
-        inset 0 0 20px rgba(253,207,124,0.04),
-        /* particle outline glow — tight, medium, far */
-        0 0  6px rgba(253,207,124,0.30),
-        0 0 18px rgba(253,207,124,0.18),
-        0 0 40px rgba(253,207,124,0.10),
-        0 0 80px rgba(253,207,124,0.05),
-        /* blue corona beyond the gold */
-        0 0 110px rgba(0,160,255,0.07);
-      /* Animation initial state */
+      padding: 32px 0 0;
+      border-top: 1px solid rgba(253,207,124,0.35);
+      background: none;
+      box-shadow: none;
       opacity: 0;
-      filter: blur(16px) brightness(0.25);
-      will-change: transform, opacity, filter;
+      transform: translateY(28px);
+      will-change: transform, opacity;
       transition:
-        opacity  1.15s cubic-bezier(0.16, 1, 0.3, 1),
-        filter   1.15s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity  1.1s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* Odd items come from the left */
-    .benefit-item:nth-child(odd) {
-      transform: translateX(-72px) scale(0.95);
-    }
-
-    /* Even items come from the right */
-    .benefit-item:nth-child(even) {
-      transform: translateX(72px) scale(0.95);
-    }
-
-    /* Revealed — portal fully open, vortex glow pulses */
     .benefit-item.in-view {
       opacity: 1;
-      filter: blur(0) brightness(1);
-      transform: translateX(0) scale(1);
-      animation: vortexPulse 5s ease-in-out infinite 1.2s;
+      transform: translateY(0);
     }
 
-    @keyframes vortexPulse {
-      0%, 100% {
-        box-shadow:
-          inset 0 0 50px rgba(0,120,255,0.07),
-          inset 0 0 20px rgba(253,207,124,0.04),
-          0 0  6px rgba(253,207,124,0.30),
-          0 0 18px rgba(253,207,124,0.18),
-          0 0 40px rgba(253,207,124,0.10),
-          0 0 80px rgba(253,207,124,0.05),
-          0 0 110px rgba(0,160,255,0.07);
-        border-color: rgba(253,207,124,0.28);
-      }
-      50% {
-        box-shadow:
-          inset 0 0 50px rgba(0,120,255,0.10),
-          inset 0 0 20px rgba(253,207,124,0.06),
-          0 0  8px rgba(253,207,124,0.45),
-          0 0 22px rgba(253,207,124,0.26),
-          0 0 52px rgba(253,207,124,0.14),
-          0 0 95px rgba(253,207,124,0.07),
-          0 0 130px rgba(0,160,255,0.10);
-        border-color: rgba(253,207,124,0.45);
-      }
-    }
+    .benefit-item:nth-child(2) { transition-delay: 0.15s; }
+    .benefit-item:nth-child(3) { transition-delay: 0.30s; }
 
-    /* Inner nebula shimmer overlay */
-    .benefit-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 55% 35% at 50% 0%,
-          rgba(0,194,255,0.07) 0%,
-          transparent 65%
-        ),
-        radial-gradient(ellipse 40% 25% at 50% 100%,
-          rgba(253,207,124,0.06) 0%,
-          transparent 65%
-        );
-      pointer-events: none;
-      border-radius: inherit;
+    .benefit-phase {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
 
     .benefit-content strong {
       display: block;
-      font-size: 1rem;
-      font-weight: 500;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 600;
       color: var(--white);
-      margin-bottom: 6px;
-      letter-spacing: 0.01em;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
     }
 
     .benefit-content span {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.95);
-      line-height: 1.7;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
     }
 
     /* ── Calendly Section ───────────────────────────────── */
@@ -596,10 +633,10 @@
         gap: 16px;
       }
 
-      /* Tighter portal slide on mobile */
-      .benefit-item:nth-child(odd)  { transform: translateX(-36px) scale(0.97); }
-      .benefit-item:nth-child(even) { transform: translateX(36px)  scale(0.97); }
-      .benefit-item { padding: 28px 24px; }
+      .benefits-list { grid-template-columns: 1fr; gap: 0; }
+      .benefit-item { padding: 28px 0 0; }
+      .benefit-item:nth-child(2),
+      .benefit-item:nth-child(3) { margin-top: 32px; }
     }
   </style>
 </head>
@@ -627,56 +664,78 @@
         Building the future of<br><em>immersive community spaces</em>
       </h1>
       <p class="hero-subheadline">
-        An invitation to shape what comes next.
-      </p>
-      <p class="hero-vision">
-        Innerverse is a spatial web platform where communities gather inside immersive, navigable environments, not flat feeds or video grids. Designed for mastermind hosts, cohort facilitators, and creative community leaders who understand that the space you gather in elevates the experience and how your work is perceived. Built to feel like a sanctuary rather than a tool, each environment is a premium venue that transforms how your community shows up. Founding Partners are the first to step inside, co-create this new way of gathering, and shape how their brand is experienced.
+        An invitation for the hosts who want to define what intentional digital gathering looks like.
       </p>
     </div>
   </section>
 
-  <div class="container"><div class="divider"></div></div>
+  <!-- ── VISION / ROOM ────────────────────────────────── -->
+  <section id="vision">
+    <div class="container">
+      <p class="vision-header reveal">Innerverse is a spatial web platform where communities gather inside immersive, navigable environments built for presence.</p>
+    </div>
+
+    <div id="room-stage">
+      <canvas id="room-particles" aria-hidden="true"></canvas>
+
+      <div id="room-perspective">
+        <div id="room-carousel">
+
+          <div class="room-wall">
+            <p>Currently in development, with first environments launching mid-2025.</p>
+          </div>
+
+          <div class="room-wall">
+            <p>Designed for mastermind hosts, cohort facilitators, and creative community leaders who understand that the space you gather in elevates the experience and how your work is perceived.</p>
+          </div>
+
+          <div class="room-wall">
+            <p>Built to feel like a sanctuary rather than a tool, each environment is a premium venue that transforms how your community shows up.</p>
+          </div>
+
+          <div class="room-wall">
+            <p>Founding Partners are the first to step inside, shape how the environment is customised to serve their goals, and define how their brand is experienced.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="room-fade room-fade-top"></div>
+      <div class="room-fade room-fade-bottom"></div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider reveal"></div></div>
 
   <!-- ── BENEFITS ──────────────────────────────────────── -->
   <section id="benefits">
     <div class="container">
       <p class="section-label reveal">For those who build with intention</p>
-      <h2 class="section-title reveal delay-1">What Founding Partners get</h2>
+      <h2 class="section-title reveal delay-1">How it works</h2>
 
       <ul class="benefits-list">
 
         <li class="benefit-item">
           <div class="benefit-content">
-            <strong>Early access to Commercial V0</strong>
-            <span>Be among the first to step inside and host inside Innerverse's first spatial environment, before it opens to the world.</span>
+            <span class="benefit-phase">Phase 1</span>
+            <strong>Research Conversation</strong>
+            <span>You join a short call with the Innerverse founder. We learn about your community, your program structure, and what a spatial environment could hold for your members. Your input informs how the environment is customised to serve your goals.</span>
           </div>
         </li>
 
         <li class="benefit-item">
           <div class="benefit-content">
-            <strong>Co-creation of spatial community environments</strong>
-            <span>Work directly with the Innerverse team to shape your own immersive space, translating your community's identity into architectural form that makes the experience you offer unforgettable.</span>
+            <span class="benefit-phase">Phase 2</span>
+            <strong>Demo Access</strong>
+            <span>Before any public release, you get first access to the Innerverse V0 spatial environment. You see it, respond to it, and your feedback influences the next layer of development.</span>
           </div>
         </li>
 
         <li class="benefit-item">
           <div class="benefit-content">
-            <strong>Founding Partner badge and permanent recognition</strong>
-            <span>Your name and community are woven into the fabric of Innerverse from the beginning, permanently recognized as one of the founding partners who shaped how communities gather and connect inside the platform.</span>
-          </div>
-        </li>
-
-        <li class="benefit-item">
-          <div class="benefit-content">
-            <strong>Priority support and direct feature input</strong>
-            <span>A direct line to the team. Your experience and feedback shape how the platform evolves, not as a suggestion, but as a meaningful part of the build.</span>
-          </div>
-        </li>
-
-        <li class="benefit-item">
-          <div class="benefit-content">
-            <strong>Lifetime partnership benefits</strong>
-            <span>Founding Partner terms are permanent. As Innerverse grows, your position, access, and recognition grow with it.</span>
+            <span class="benefit-phase">Phase 3</span>
+            <strong>Founding Pilot</strong>
+            <span>You host your next cohort or mastermind inside a custom Innerverse environment. Founding partner pricing applies and is locked permanently for your account as the platform grows.</span>
           </div>
         </li>
 
@@ -750,35 +809,32 @@
     spellOut('header-wordmark');
     spellOut('footer-wordmark');
 
-    // ── Scroll-triggered reveal ──────────────────────────
+    // ── Scroll-triggered reveal (bidirectional) ──────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('visible');
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ── Benefit items — portal slide-in from left / right ──
-    // Double-rAF ensures the browser has painted the initial hidden CSS state
-    // (opacity:0 + translateX) before we start observing, so the transition
-    // is always visible rather than firing before styles are rendered.
+    // ── Benefit items — fade up (bidirectional) ──────────
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const benefitObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('in-view');
-              benefitObserver.unobserve(entry.target);
+            } else {
+              entry.target.classList.remove('in-view');
             }
           });
         }, {
           threshold: 0.18,
-          // Cards must be 80px inside the viewport bottom before triggering —
-          // ensures the user sees the slide-in rather than items pre-revealed.
           rootMargin: '0px 0px -80px 0px'
         });
 
@@ -936,6 +992,108 @@
     }
 
     tick();
+
+
+    // ── 3D Room carousel ─────────────────────────────────
+    (function () {
+      const roomPerspective = document.getElementById('room-perspective');
+      const roomCarousel    = document.getElementById('room-carousel');
+      const roomWalls       = roomCarousel.querySelectorAll('.room-wall');
+      let roomAngle = 0;
+
+      function setupRoom() {
+        const vw = window.innerWidth;
+        const R  = Math.round(vw * 0.52);
+        roomPerspective.style.perspective = Math.round(vw * 1.4) + 'px';
+        roomWalls.forEach(function (wall, i) {
+          wall.style.transform = 'rotateY(' + (i * 90) + 'deg) translateZ(' + (-R) + 'px)';
+        });
+      }
+
+      setupRoom();
+      window.addEventListener('resize', setupRoom);
+
+      // Auto-rotate every 4 seconds, always rightward
+      setInterval(function () {
+        roomAngle -= 90;
+        roomCarousel.style.transform = 'rotateY(' + roomAngle + 'deg)';
+      }, 4000);
+    }());
+
+
+    // ── Room dust particles ───────────────────────────────
+    (function () {
+      const rc  = document.getElementById('room-particles');
+      const rctx = rc.getContext('2d');
+
+      function resizeRoomCanvas() {
+        rc.width  = rc.offsetWidth  || rc.parentElement.offsetWidth;
+        rc.height = rc.offsetHeight || rc.parentElement.offsetHeight;
+      }
+      resizeRoomCanvas();
+      window.addEventListener('resize', resizeRoomCanvas);
+
+      const DUST_COLS = [
+        [255,210,100],[248,190,70],[253,207,124],[255,230,140],[240,175,55]
+      ];
+
+      function rnd(a, b) { return Math.random() * (b - a) + a; }
+
+      function spawnDust() {
+        const col = DUST_COLS[Math.floor(Math.random() * DUST_COLS.length)];
+        return {
+          x:     rnd(rc.width * 0.08, rc.width * 0.92),
+          y:     rnd(-20, rc.height * 0.55),
+          r:     rnd(0.35, 2.4),
+          vy:    rnd(0.07, 0.32),
+          vx:    rnd(-0.05, 0.05),
+          alpha: rnd(0.20, 0.78),
+          fade:  rnd(0.0005, 0.0016),
+          life:  1.0,
+          col,
+        };
+      }
+
+      // Pre-scatter across full height so it doesn't all start at top
+      let dust = Array.from({ length: 90 }, function () {
+        const d = spawnDust();
+        d.y    = rnd(0, rc.height);
+        d.life = rnd(0.2, 1.0);
+        return d;
+      });
+
+      function tickDust() {
+        rctx.clearRect(0, 0, rc.width, rc.height);
+
+        for (let i = 0; i < dust.length; i++) {
+          const d = dust[i];
+          d.x += d.vx;
+          d.y += d.vy;
+          d.life -= d.fade;
+
+          const a = d.alpha * d.life;
+          if (a > 0.01) {
+            const [r, g, b] = d.col;
+            rctx.save();
+            rctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',' + (a * 0.55) + ')';
+            rctx.shadowBlur  = d.r * 4;
+            rctx.fillStyle   = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+            rctx.beginPath();
+            rctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+            rctx.fill();
+            rctx.restore();
+          }
+
+          if (d.life <= 0 || d.y > rc.height + 10) {
+            dust[i] = spawnDust();
+          }
+        }
+
+        requestAnimationFrame(tickDust);
+      }
+
+      tickDust();
+    }());
   </script>
 
 </body>
