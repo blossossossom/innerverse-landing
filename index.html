@@ -278,6 +278,14 @@
       z-index: 1;
     }
 
+    .room-wall-featured {
+      font-size: clamp(1.5rem, 3.2vw, 2.4rem) !important;
+      font-weight: 300 !important;
+      color: rgba(255,255,255,0.95) !important;
+      line-height: 1.55 !important;
+      letter-spacing: 0.02em !important;
+    }
+
     @media (max-width: 1024px) {
       .room-wall p {
         font-size: clamp(1.25rem, 3.2vw, 1.6rem);
@@ -314,13 +322,17 @@
 
     .room-fade-left {
       top: 0; bottom: 0; left: 0;
+      right: auto;
       width: 18%;
+      height: 100%;
       background: linear-gradient(to right, #111d2c 0%, rgba(17,29,44,0) 100%);
     }
 
     .room-fade-right {
       top: 0; bottom: 0; right: 0;
+      left: auto;
       width: 18%;
+      height: 100%;
       background: linear-gradient(to left, #111d2c 0%, rgba(17,29,44,0) 100%);
     }
 
@@ -709,7 +721,7 @@
         <div id="room-carousel">
 
           <div class="room-wall">
-            <p>Currently in development, with first environments launching mid-2025.</p>
+            <p class="room-wall-featured">Currently in development, with first environments launching mid-2025.</p>
           </div>
 
           <div class="room-wall">
@@ -1046,7 +1058,7 @@
       setInterval(function () {
         roomAngle -= 90;
         roomCarousel.style.transform = 'rotateY(' + roomAngle + 'deg)';
-      }, 4000);
+      }, 6000);
     }());
 
 
