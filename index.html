@@ -238,8 +238,8 @@
       -webkit-backface-visibility: hidden;
       background:
         radial-gradient(ellipse 40% 60% at 50% 0%,
-          rgba(40,130,255,0.11) 0%,
-          rgba(0,70,200,0.05) 55%,
+          rgba(120,175,240,0.10) 0%,
+          rgba(80,140,210,0.04) 55%,
           transparent 82%
         ),
         linear-gradient(180deg,
@@ -248,9 +248,9 @@
           rgba(4,7,16,1)     100%
         );
       box-shadow:
-        inset 2px  0 50px rgba(0,80,180,0.13),
-        inset -2px 0 50px rgba(0,80,180,0.13),
-        inset 0    2px 70px rgba(0,100,220,0.09);
+        inset 2px  0 50px rgba(90,155,225,0.12),
+        inset -2px 0 50px rgba(90,155,225,0.12),
+        inset 0    2px 70px rgba(130,185,240,0.08);
     }
 
     /* floor glow warm wash */
@@ -268,14 +268,29 @@
     .room-wall p {
       position: relative;
       font-family: 'Syne', sans-serif;
-      font-size: clamp(1rem, 2.1vw, 1.65rem);
+      font-size: clamp(1.15rem, 2.3vw, 1.8rem);
       font-weight: 400;
       color: rgba(255,255,255,0.82);
       text-align: center;
-      line-height: 1.65;
+      line-height: 1.7;
       max-width: 680px;
       letter-spacing: 0.01em;
       z-index: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .room-wall p {
+        font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+        line-height: 1.72;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .room-wall p {
+        font-size: clamp(1.2rem, 4.8vw, 1.5rem);
+        line-height: 1.75;
+        max-width: 88%;
+      }
     }
 
     /* top/bottom gradient masks — room dissolves into page */
@@ -295,6 +310,18 @@
     .room-fade-bottom {
       bottom: 0;
       background: linear-gradient(to top, #111d2c 0%, rgba(17,29,44,0) 100%);
+    }
+
+    .room-fade-left {
+      top: 0; bottom: 0; left: 0;
+      width: 18%;
+      background: linear-gradient(to right, #111d2c 0%, rgba(17,29,44,0) 100%);
+    }
+
+    .room-fade-right {
+      top: 0; bottom: 0; right: 0;
+      width: 18%;
+      background: linear-gradient(to left, #111d2c 0%, rgba(17,29,44,0) 100%);
     }
 
     @keyframes heroFadeIn {
@@ -702,6 +729,8 @@
 
       <div class="room-fade room-fade-top"></div>
       <div class="room-fade room-fade-bottom"></div>
+      <div class="room-fade room-fade-left"></div>
+      <div class="room-fade room-fade-right"></div>
     </div>
   </section>
 
